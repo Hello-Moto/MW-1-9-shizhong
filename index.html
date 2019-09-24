@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//h2D XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/h2D/xhtml1-transitional.h2d">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>超酷数码钟表 - 妙味课堂 - www.miaov.com</title>
+<link href="miaov_style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div id="clock" class="date">
+    <h2><img src="images/title.png" /></h2>
+    <div class="year">
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="2" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/year.png" alt="year" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/month.png" alt="month" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/seven.png" alt="seven" />
+    </div>
+    <div class="time">
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/sign.png" alt="sign" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img src="images/sign.png" alt="sign" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="num" src="images/0.png" alt="0" />
+        <img class="pos2" src="images/week.png" alt="week" />
+        <img class="num2" src="images/one.png" alt="1" />
+    </div>
+</div>
+<script>
+    !function(){
+        var week = [
+            "images/seven.png",
+            "images/one.png",
+            "images/two.png",
+            "images/three.png",
+            "images/four.png",
+            "images/five.png",
+            "images/six.png"
+        ]
+        function clock(){
+            var num = document.querySelectorAll(".num")
+            var num2 = document.querySelector(".num2")
+            function add(n){
+                return n < 10? '0' + n : '' + n
+            }
+            var date = new Date()
+            var years = date.getFullYear()
+            var months = date.getMonth() + 1
+            var hours = date.getHours()
+            var minutes = date.getMinutes()
+            var seconds = date.getSeconds()
+            var dates = date.getDate()
+            var day = date.getDay()
+            console.log(day)
+            var timeStr = '' + years + add(months) + add(dates) + add(hours) + add(minutes) + add(seconds)
+            for(var i = 0; i < num.length; i++){
+                num[i].src = "images/" + timeStr[i] + ".png"
+            }
+            num2.src = week[day]
+        }
+        clock()
+        setInterval(clock,1000);
+    }.call()
+</script>
+</body>
+</html>
